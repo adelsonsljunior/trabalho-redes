@@ -183,3 +183,5 @@ echo ""
 echo "Para visualizar o relatório:"
 echo "  cat $REPORT_FILE"
 
+
+
