@@ -23,11 +23,11 @@ chmod 600 $CERT_DIR/dovecot.key
 chmod 644 $CERT_DIR/dovecot.crt
 chown root:root $CERT_DIR/dovecot.key $CERT_DIR/dovecot.crt
 
-# configurar protocols
+# configurar protocols (não vamos usar lmtp pra simplificar)
 echo "Configurando protocols..."
 
 cat > /etc/dovecot/conf.d/10-protocols.conf <<EOF
-protocols = imap pop3 lmtp
+protocols = imap pop3
 EOF
 
 cat > /etc/dovecot/conf.d/10-logging.conf <<EOF
@@ -86,7 +86,8 @@ cat > /etc/dovecot/conf.d/10-ssl.conf <<EOF
 ssl = required
 ssl_cert = <$CERT_DIR/dovecot.crt
 ssl_key = <$CERT_DIR/dovecot.key
-ssl_protocols = !SSLv2 !SSLv3 TLSv1.2 TLSv1.3
+# Debian 12 reclama de ssl_protocols, então usamos ssl_min_protocol
+ssl_min_protocol = TLSv1.2
 ssl_cipher_list = HIGH:!aNULL:!MD5
 ssl_prefer_server_ciphers = yes
 EOF
@@ -119,14 +120,6 @@ service pop3-login {
     inet_listener pop3s {
         port = 995
         ssl = yes
-    }
-}
-
-service lmtp {
-    unix_listener /var/spool/postfix/private/dovecot-lmtp {
-        mode = 0600
-        user = postfix
-        group = postfix
     }
 }
 
