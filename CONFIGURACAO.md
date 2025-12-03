@@ -278,7 +278,7 @@ Se a configuração automática não funcionar:
 - **Porta**: 587
 - **SSL/TLS**: STARTTLS
 - **Autenticação**: Senha normal
-- **Usuário**: aluno1@email.local
+- **Usuário**: aluno1
 
 ### 3. Aceitar Certificado Autoassinado
 
