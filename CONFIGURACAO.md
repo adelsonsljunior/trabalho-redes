@@ -436,25 +436,6 @@ O UFW está configurado para permitir apenas as portas necessárias:
 - 993 (IMAPS)
 - 995 (POP3S)
 
-### Senhas
-
-As senhas dos usuários de teste são fracas (123456). Em produção:
-- Use senhas fortes
-- Considere usar autenticação de dois fatores
-- Implemente políticas de senha
-
-## Próximos Passos
-
-Para um ambiente de produção, considere:
-
-1. **Certificados SSL**: Use Let's Encrypt ou outra CA confiável
-2. **SPF/DKIM/DMARC**: Configure registros DNS para autenticação de email
-3. **Antispam**: Instale e configure SpamAssassin ou similar
-4. **Antivírus**: Instale e configure ClamAV
-5. **Webmail**: Instale Roundcube ou similar para acesso web
-6. **Backup**: Configure backup regular dos Maildirs
-7. **Monitoramento**: Configure monitoramento dos serviços
-
 ## Referências
 
 - [Postfix Documentation](http://www.postfix.org/documentation.html)
